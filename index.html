@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beeptunes Live Radio Player</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="./favicon.png">
+    </head>
+    <body class="p-4 sm:p-8 min-h-screen flex items-center justify-center">
+        <div id="player" class="player-container p-6 w-full max-w-lg">
+            <div class="mb-8 flex flex-col items-center">
+                <div class="w-48 h-48 mb-6 relative">
+                    <img
+                        id="album-art"
+                        src="https://placehold.co/512/EEE/31343C?font=playfair-display&text=Beeptunes"
+                        alt="Album Cover"
+                        class="album-art"
+                        onerror="this.src='placehold.co/512/EEE/31343C?font=Vazirmatn&text=Radio'"
+                    >
+                    <div id="loading-spinner" class="loading-animation">
+                        <div class="loading-spinner-circle"></div>
+                    </div>
+                </div>
+                <p id="station-name" class="text-lg font-bold text-[#58a6ff] mb-1">...</p>
+                <p id="song-title" class="text-2xl font-extrabold text-white text-center">عنوان آهنگ</p>
+                <p id="artist-name" class="text-base text-gray-400 text-center mt-1">نام هنرمند</p>
+            </div>
+            <div class="w-full mb-4">
+                <canvas
+                    id="audio-visualizer"
+                    width="400"
+                    height="80"
+                    class="rounded-lg bg-gray-800 mt-4"
+                ></canvas>
+            </div>
+            <div class="flex justify-between items-center text-xs text-gray-400 mb-6 flex-col">
+                <div id="progress-bar" class="h-2 rounded-full bg-gray-700 overflow-hidden w-full">
+                    <div class="h-full bg-[#2ea043] transition-all duration-300" style="width: 0%; float: left;"></div>
+                </div>
+                <div class="flex justify-between text-xs font-mono mt-1 text-gray-400 w-full">
+                    <span id="duration-time">0:00</span>
+                    <span id="elapsed-time">0:00</span>
+                </div>
+            </div>
+            <div class="flex justify-center mb-6">
+                <button id="play-pause-btn" class="play-pause-btn bg-[#2ea043] text-white p-5 rounded-full shadow-xl hover:bg-[#238636] focus:outline-none" aria-label="پخش یا مکث">
+                    <svg
+                        id="play-icon"
+                        class="w-8 h-8"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        style="display: block;"
+                    >
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg
+                        id="pause-icon"
+                        class="w-8 h-8"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        style="display: none;"
+                    >
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="border-t border-gray-700 pt-4 mt-4">
+                <p class="text-gray-400 text-sm mb-3">انتخاب موج:</p>
+                <div id="stations-container" class="flex flex-wrap justify-center gap-2"></div>
+                <p id="stations-placeholder" class="text-center text-gray-500 mt-4" style="display: none;">در حال بارگذاری ایستگاه‌ها...</p>
+            </div>
+        </div>
+    </body>
+    <script src="./script.js"></script>
+</html>

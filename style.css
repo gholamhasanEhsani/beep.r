@@ -1,0 +1,101 @@
+body {
+	font-family: 'Vazirmatn', sans-serif;
+	background-color: #0d1117;
+}
+
+.player-container {
+	background-color: #161b22;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	border-radius: 1rem;
+	max-width: 450px;
+	margin: auto;
+	border: 1px solid #30363d;
+}
+
+.album-art {
+	width: 192px;
+	height: 192px;
+	object-fit: cover;
+	border-radius: 0.75rem;
+	filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+	cursor: pointer;
+}
+
+.play-pause-btn {
+	transition: background-color 0.2s, transform 0.1s;
+}
+
+.play-pause-btn:active {
+	transform: scale(0.95);
+}
+
+.station-btn {
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+	border: 1px solid transparent;
+}
+
+.station-btn.active {
+	background-color: #1f6feb;
+	border-color: #58a6ff;
+	color: #ffffff;
+}
+
+.loading-animation {
+
+	/* ساخت یک انیمیشن لودینگ جذاب با حلقه نئونی */
+	display: none;                 /* مخفی در حالت عادی */
+	width: 100%;
+	height: 100%;
+	border-radius: 0.75rem;
+	background-color: rgba(22, 27, 34, 0.9);
+	z-index: 10;                 /* اسپینر */
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.loading-spinner-circle {
+	border: 4px solid rgba(167, 243, 208, 0.2);                 /* light green/teal */
+	border-top: 4px solid #a7f3d0;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+	position: absolute;
+	top: calc(50% - 20px);
+	left: calc(50% - 20px);
+	box-shadow: 0 0 10px #a7f3d0;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+
+}
+
+#audio-visualizer {
+	width: 100%;
+	height: 80px;                 /* اطمینان از قرارگیری در وسط */
+	display: block;
+}
+
+@media (max-width:640px) {
+	body {
+		padding: 1rem;
+	}
+
+	.player-container {
+		border-radius: 0.5rem;
+	}
+
+	.album-art {
+		width: 160px;
+		height: 160px;
+	}
+
+}
